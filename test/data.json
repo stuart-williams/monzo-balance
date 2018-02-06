@@ -1,0 +1,31 @@
+{
+  "reqHeaders": {
+    "valid": {
+      "reqheaders": {
+        "Authorization": "Bearer valid_access_token"
+      }
+    },
+    "invalid": {
+      "reqheaders": {
+        "Authorization": "Bearer invalid_access_token"
+      }
+    }
+  },
+  "accountsResponse": {
+    "accounts": [
+      {
+        "id": "1",
+        "type": "uk_prepaid"
+      },
+      {
+        "id": "2",
+        "type": "uk_retail"
+      }
+    ]
+  },
+  "balanceResponse": {
+    "currency": "GBP",
+    "balance": "10000",
+    "total_balance": "20000"
+  }
+}

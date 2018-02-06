@@ -25,19 +25,17 @@ app.get('/', async (req, res) => {
   }
 
   try {
-    const balance = await fetchBalance(req)
-    res.render('index', balance)
+    res.render('index', await fetchBalance(req))
   } catch (error) {
     try {
       if (error.code === 401) {
         req.session.user = await requestRefreshToken(req.session.user)
-        res.redirect('/')
+        res.render('index', await fetchBalance(req))
       } else {
         throw new Error(error)
       }
     } catch (error) {
-      console.log(error)
-      res.send('Oops, someting went wrong...')
+      res.redirect('/error')
     }
   }
 })
@@ -54,8 +52,10 @@ app.get('/auth-redirect', async (req, res) => {
     req.session.user = await requestAccessToken(req.query)
     res.redirect('/')
   } catch (error) {
-    res.send('Oops, someting went wrong...')
+    res.redirect('/error')
   }
 })
+
+app.get('/error', (req, res) => res.render('error'))
 
 module.exports = app
