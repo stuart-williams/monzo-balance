@@ -16,10 +16,9 @@ const fetch = (path, req) => new Promise((resolve, reject) =>
 module.exports = async (req) => {
   const { accounts } = await fetch('accounts', req)
   const { id } = accounts.find(({ type }) => type === 'uk_retail') || accounts[0]
-  const { currency, balance, total_balance } = await fetch('balance?account_id=' + id, req)
+  const { currency, balance } = await fetch('balance?account_id=' + id, req)
 
   return {
-    balance: formatAmount(currency, balance),
-    total_balance: formatAmount(currency, total_balance)
+    balance: formatAmount(currency, balance)
   }
 }
