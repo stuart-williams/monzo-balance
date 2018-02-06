@@ -27,6 +27,8 @@
   },
   "scripts": {
     "start": "node src/index",
+    "lint": "eslint src",
+    "pretest": "npm run lint",
     "test": "mocha"
   }
 }
