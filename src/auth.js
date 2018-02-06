@@ -4,9 +4,6 @@ const request = require('request')
 
 const post = ({ form }) => new Promise((resolve, reject) =>
   request.post('https://api.monzo.com/oauth2/token', {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
     form: Object.assign({
       client_id: process.env.CLIENT_ID,
       client_secret: process.env.CLIENT_SECRET

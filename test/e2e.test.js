@@ -20,11 +20,8 @@ function createStubApp (session) {
 
 function isValidHomeView (res) {
   const $ = cheerio.load(res.text)
-  const $balance = $('#balance').text()
-  const $totalBalance = $('#total-balance').text()
-
-  expect($balance).to.equal('£100.00')
-  expect($totalBalance).to.equal('£200.00')
+  expect($('#balance').text()).to.equal('£100.00')
+  expect($('#total-balance').text()).to.equal('£200.00')
 }
 
 describe('Home route', () => {
@@ -107,6 +104,52 @@ describe('Home route', () => {
 
     request(stubApp)
       .get('/')
+      .expect(302)
+      .expect('Location', '/error')
+      .end(done)
+  })
+})
+
+describe('Auth redirect route', () => {
+  it('should redirect to the home route when successfully authenticated', (done) => {
+    const stubApp = createStubApp()
+
+    nock('https://api.monzo.com')
+      .post('/oauth2/token', {
+        client_id: /.*/,
+        client_secret: /.*/,
+        grant_type: 'authorization_code',
+        redirect_uri: /.*/
+      })
+      .reply(200, {
+        access_token: 'valid_access_token'
+      })
+
+    request(stubApp)
+      .get('/auth-redirect')
+      .expect(302)
+      .expect('Location', '/')
+      .end(done)
+  })
+
+  it('should redirect to the error page when the api responds with a non 200 status code', (done) => {
+    const stubApp = createStubApp({
+      user: {
+        access_token: 'valid_access_token'
+      }
+    })
+
+    nock('https://api.monzo.com')
+      .post('/oauth2/token', {
+        client_id: /.*/,
+        client_secret: /.*/,
+        grant_type: 'authorization_code',
+        redirect_uri: /.*/
+      })
+      .reply(500)
+
+    request(stubApp)
+      .get('/auth-redirect')
       .expect(302)
       .expect('Location', '/error')
       .end(done)
