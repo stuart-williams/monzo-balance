@@ -93,4 +93,22 @@ describe('Home route', () => {
       .expect(isValidHomeView)
       .end(done)
   })
+
+  it('should redirect to the error page when the api responds with a non 200/401 status code', (done) => {
+    const stubApp = createStubApp({
+      user: {
+        access_token: 'valid_access_token'
+      }
+    })
+
+    nock('https://api.monzo.com', reqHeaders.valid)
+      .get('/accounts')
+      .reply(500)
+
+    request(stubApp)
+      .get('/')
+      .expect(302)
+      .expect('Location', '/error')
+      .end(done)
+  })
 })
