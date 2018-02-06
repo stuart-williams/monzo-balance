@@ -1,6 +1,10 @@
 html
   head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css', type='text/css')
+    link(rel='stylesheet', href='/main.css', type='text/css')
     title Monzo Balance
   body
-    h1#balance=balance
-    h3#total-balance=total_balance
+    .container
+      h1#balance Balance: #{balance}
+      p#total-balance Total Balance: #{total_balance}

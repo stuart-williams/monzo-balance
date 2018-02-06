@@ -1,0 +1,18 @@
+html, body {
+  font-family: MaisonNeue, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #14233c;
+  color: #aab2c0;
+}
+
+h1 {
+  color: white;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
