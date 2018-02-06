@@ -5,4 +5,12 @@ html
     link(rel='stylesheet', href='/main.css', type='text/css')
     title Monzo Balance
   body
-    h1 Oops, something went wrong
+    .container
+      .logo
+      p Oops, something went wrong
+      form(action='https://auth.getmondo.co.uk/')
+        input(type='hidden' name='client_id' value=client_id)
+        input(type='hidden' name='redirect_uri' value=redirect_uri)
+        input(type='hidden' name='response_type' value=response_type)
+        input(type='hidden' name='state' value=state)
+        button(type='submit') Sign in with your Monzo account

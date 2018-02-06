@@ -40,13 +40,6 @@ app.get('/', async (req, res) => {
   }
 })
 
-app.get('/login', (req, res) => res.render('login', {
-  client_id: process.env.CLIENT_ID,
-  redirect_uri: process.env.REDIRECT_URI,
-  response_type: 'code',
-  state: process.env.STATE_SECRET
-}))
-
 app.get('/auth-redirect', async (req, res) => {
   try {
     req.session.user = await requestAccessToken(req.query)
@@ -56,6 +49,18 @@ app.get('/auth-redirect', async (req, res) => {
   }
 })
 
-app.get('/error', (req, res) => res.render('error'))
+app.get('/login', (req, res) => res.render('login', {
+  client_id: process.env.CLIENT_ID,
+  redirect_uri: process.env.REDIRECT_URI,
+  response_type: 'code',
+  state: process.env.STATE_SECRET
+}))
+
+app.get('/error', (req, res) => res.render('error', {
+  client_id: process.env.CLIENT_ID,
+  redirect_uri: process.env.REDIRECT_URI,
+  response_type: 'code',
+  state: process.env.STATE_SECRET
+}))
 
 module.exports = app
