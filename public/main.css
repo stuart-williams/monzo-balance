@@ -1,14 +1,10 @@
 html, body {
   color: white;
   background-color: #14233c;
-  font-size: 7vmin;
+  font-size: 8vmin;
   font-family: MaisonNeue, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
    -webkit-font-smoothing: antialiased;
-}
-
-h1 {
-  font-weight: 400;
 }
 
 p {

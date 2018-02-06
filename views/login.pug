@@ -7,7 +7,7 @@ html
   body
     .container
       .logo
-      p Welcome to Monzo Balance!
+      p #{message}
       form(action='https://auth.getmondo.co.uk/')
         input(type='hidden' name='client_id' value=client_id)
         input(type='hidden' name='redirect_uri' value=redirect_uri)

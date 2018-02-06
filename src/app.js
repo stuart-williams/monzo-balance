@@ -53,14 +53,16 @@ app.get('/login', (req, res) => res.render('login', {
   client_id: process.env.CLIENT_ID,
   redirect_uri: process.env.REDIRECT_URI,
   response_type: 'code',
-  state: process.env.STATE_SECRET
+  state: process.env.STATE_SECRET,
+  message: 'Welcome to Monzo Balance!'
 }))
 
-app.get('/error', (req, res) => res.render('error', {
+app.get('/error', (req, res) => res.render('login', {
   client_id: process.env.CLIENT_ID,
   redirect_uri: process.env.REDIRECT_URI,
   response_type: 'code',
-  state: process.env.STATE_SECRET
+  state: process.env.STATE_SECRET,
+  message: 'Oops, something went wrong'
 }))
 
 module.exports = app

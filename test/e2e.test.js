@@ -20,7 +20,7 @@ function createStubApp (session) {
 
 function isValidHomeView (res) {
   const $ = cheerio.load(res.text)
-  expect($('#balance').text()).to.equal('£100.00')
+  expect($('#balance').text()).to.equal('Your balance is £100.00')
 }
 
 describe('Home route', () => {
