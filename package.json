@@ -1,0 +1,27 @@
+{
+  "name": "monzo-balance",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "<stuart.williams@bbc.co.uk>",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^5.0.0",
+    "eslint": "^4.17.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {
+    "currency-symbol-map": "^4.0.3",
+    "curry": "^1.2.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "pug": "^2.0.0-rc.4",
+    "request": "^2.83.0"
+  },
+  "scripts": {
+    "start": "node src/index"
+  }
+}
