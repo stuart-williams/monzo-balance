@@ -1,4 +1,4 @@
-/* eslint camelcase: 0 */
+/* eslint camelcase: 0, prefer-promise-reject-errors: 0 */
 
 const request = require('request')
 
@@ -12,8 +12,8 @@ const post = ({ form }) => new Promise((resolve, reject) =>
       client_secret: process.env.CLIENT_SECRET
     }, form)
   },
-  (error, response, body) => error || response.statusCode !== 200
-    ? reject(error)
+  (error, res, body) => error || res.statusCode !== 200
+    ? reject({ code: res.statusCode })
     : resolve(JSON.parse(body))))
 
 exports.requestAccessToken = ({ code }) => post({
