@@ -1,4 +1,4 @@
-# monzo-balance
+# Monzo Balance
 
 Love Monzo? Sometimes want to check your balance without out any other functionality whatsoever?? Monzo Balance is for you...
 
