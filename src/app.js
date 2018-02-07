@@ -15,10 +15,13 @@ app.set('view engine', 'pug')
 app.use(express.static('public'))
 
 app.use(session({
+  name: 'monzo-balance',
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  name: 'monzo-balance'
+  cookie: {
+    secure: process.env.NODE_ENV === 'production'
+  }
 }))
 
 app.use(morgan('combined', { stream: logger.stream }))
