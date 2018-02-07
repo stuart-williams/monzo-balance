@@ -4,7 +4,6 @@ const transports = []
 
 if (process.env.LOG_PATH) {
   transports.push(new winston.transports.File({
-    level: 'info',
     filename: `${process.env.LOG_PATH}/output.log`
   }))
 } else {
