@@ -10,7 +10,7 @@ const fetch = (path, req) => new Promise((resolve, reject) =>
     }
   },
   (error, res, body) => error || res.statusCode !== 200
-    ? reject({ code: res.statusCode })
+    ? reject({ code: res.statusCode, error, body })
     : resolve(JSON.parse(body))))
 
 module.exports = async (req) => {

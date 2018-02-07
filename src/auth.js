@@ -10,7 +10,7 @@ const post = ({ form }) => new Promise((resolve, reject) =>
     }, form)
   },
   (error, res, body) => error || res.statusCode !== 200
-    ? reject({ code: res.statusCode })
+    ? reject({ code: res.statusCode, error, body })
     : resolve(JSON.parse(body))))
 
 exports.requestAccessToken = ({ code }) => post({
