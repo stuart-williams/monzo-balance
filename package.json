@@ -29,6 +29,11 @@
     "start": "node src/index",
     "lint": "eslint src",
     "pretest": "npm run lint",
-    "test": "mocha"
+    "test": "mocha",
+    "predocker:publish": "npm test",
+    "docker:build": "docker build -t monzo-balance .",
+    "docker:tag": "docker tag monzo-balance:latest 537842893258.dkr.ecr.eu-west-1.amazonaws.com/monzo-balance:latest",
+    "docker:push": "docker push 537842893258.dkr.ecr.eu-west-1.amazonaws.com/monzo-balance:latest",
+    "docker:publish": "npm run docker:build && npm run docker:tag && npm run docker:push"
   }
 }
