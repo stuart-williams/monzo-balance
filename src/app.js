@@ -4,6 +4,8 @@ require('dotenv').config()
 
 const express = require('express')
 const session = require('express-session')
+const morgan = require('morgan')
+const logger = require('./logger')
 const { requestAccessToken, requestRefreshToken } = require('./auth')
 const fetchBalance = require('./fetch-balance')
 
@@ -18,6 +20,8 @@ app.use(session({
   saveUninitialized: true,
   name: 'monzo-balance'
 }))
+
+app.use(morgan('combined', { stream: logger.stream }))
 
 app.get('/', async (req, res) => {
   if (!req.session.user) {
@@ -35,6 +39,7 @@ app.get('/', async (req, res) => {
         throw new Error(error)
       }
     } catch (error) {
+      logger.error(error)
       res.redirect('/error')
     }
   }
@@ -45,6 +50,7 @@ app.get('/auth-redirect', async (req, res) => {
     req.session.user = await requestAccessToken(req.query)
     res.redirect('/')
   } catch (error) {
+    logger.error(error)
     res.redirect('/error')
   }
 })
