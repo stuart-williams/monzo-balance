@@ -7,11 +7,13 @@ const homeRoute = async (req, res) => {
   if (!req.session.user) return res.redirect('/login')
 
   try {
+    res.set('Cache-Control', 'no-cache')
     res.render('index', await fetchBalance(req))
   } catch (error) {
     try {
       if (error.code === 401) {
         req.session.user = await requestRefreshToken(req.session.user)
+        res.set('Cache-Control', 'no-cache')
         res.render('index', await fetchBalance(req))
       } else {
         throw new Error(error)
