@@ -1,7 +1,7 @@
 const router = require('express').Router()
-const logger = require('./logger')
-const { requestAccessToken, requestRefreshToken } = require('./auth')
-const fetchBalance = require('./fetch-balance')
+const logger = require('./common/logger')
+const { requestAccessToken, requestRefreshToken } = require('./common/auth')
+const fetchBalance = require('./common/fetch-balance')
 
 const homeRoute = async (req, res) => {
   if (!req.session.user) return res.redirect('/login')

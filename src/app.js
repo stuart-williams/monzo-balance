@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const session = require('express-session')
 const morgan = require('morgan')
-const logger = require('./logger')
+const logger = require('./common/logger')
 
 const app = express()
 
