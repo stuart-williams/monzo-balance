@@ -11,15 +11,22 @@ const fetchBalance = require('./fetch-balance')
 
 const app = express()
 
+const loginForm = {
+  client_id: process.env.CLIENT_ID,
+  redirect_uri: process.env.REDIRECT_URI,
+  state: process.env.STATE_SECRET,
+  response_type: 'code'
+}
+
 app.set('view engine', 'pug')
 app.use(express.static('public'))
 
 app.use(session({
-  name: 'monzo-balance',
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
+    domain: '*.monzobalance.co.uk',
     secure: process.env.NODE_ENV === 'production'
   }
 }))
@@ -27,9 +34,7 @@ app.use(session({
 app.use(morgan('combined', { stream: logger.stream }))
 
 app.get('/', async (req, res) => {
-  if (!req.session.user) {
-    return res.redirect('/login')
-  }
+  if (!req.session.user) return res.redirect('/login')
 
   try {
     res.render('index', await fetchBalance(req))
@@ -58,20 +63,20 @@ app.get('/auth-redirect', async (req, res) => {
   }
 })
 
-app.get('/login', (req, res) => res.render('login', {
-  client_id: process.env.CLIENT_ID,
-  redirect_uri: process.env.REDIRECT_URI,
-  response_type: 'code',
-  state: process.env.STATE_SECRET,
-  message: 'Welcome to Monzo Balance!'
-}))
+app.get('/login', (req, res) => {
+  if (req.session.user) return res.redirect('/')
 
-app.get('/error', (req, res) => res.render('login', {
-  client_id: process.env.CLIENT_ID,
-  redirect_uri: process.env.REDIRECT_URI,
-  response_type: 'code',
-  state: process.env.STATE_SECRET,
-  message: 'Oops, something went wrong'
-}))
+  res.render('login', Object.assign({
+    message: 'Welcome to Monzo Balance!'
+  }, loginForm))
+})
+
+app.get('/error', (req, res) => {
+  if (req.session.user) return res.redirect('/')
+
+  res.render('login', Object.assign({
+    message: 'Oops, something went wrong'
+  }, loginForm))
+})
 
 module.exports = app

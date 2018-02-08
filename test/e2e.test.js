@@ -154,3 +154,19 @@ describe('Auth redirect route', () => {
       .end(done)
   })
 })
+
+describe('Login route', () => {
+  it('should redirect to the home route if the user is authenticated', (done) => {
+    const stubApp = createStubApp({
+      user: {
+        access_token: 'valid_access_token'
+      }
+    })
+
+    request(stubApp)
+      .get('/login')
+      .expect(302)
+      .expect('Location', '/')
+      .end(done)
+  })
+})
