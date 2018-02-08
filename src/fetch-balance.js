@@ -1,7 +1,10 @@
 /* eslint camelcase: 0, prefer-promise-reject-errors: 0 */
 
 const request = require('request')
-const { formatAmount } = require('./utils')
+const symbol = require('currency-symbol-map')
+
+const formatAmount = (currency, amount) =>
+  `${(symbol(currency) || '')}${(Math.abs(amount) / 100).toFixed(2)}`
 
 const fetch = (path, req) => new Promise((resolve, reject) =>
   request.get(`https://api.monzo.com/${path}`, {
@@ -10,7 +13,7 @@ const fetch = (path, req) => new Promise((resolve, reject) =>
     }
   },
   (error, res, body) => error || res.statusCode !== 200
-    ? reject({ code: res.statusCode, error, body })
+    ? reject({ code: res.statusCode, error })
     : resolve(JSON.parse(body))))
 
 module.exports = async (req) => {
