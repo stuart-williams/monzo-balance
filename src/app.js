@@ -14,7 +14,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-    domain: '*.monzobalance.co.uk',
+    domain: process.env.COOKIE_DOMAIN,
     secure: process.env.NODE_ENV === 'production'
   }
 }))
