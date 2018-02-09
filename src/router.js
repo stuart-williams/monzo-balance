@@ -18,6 +18,7 @@ const homeRoute = async (req, res) => {
       }
     } catch (error) {
       logger.error(error)
+      req.session.user = undefined
       res.redirect('/error')
     }
   }
@@ -29,6 +30,7 @@ const authRedirectRoute = async (req, res) => {
     res.redirect('/')
   } catch (error) {
     logger.error(error)
+    req.session.user = undefined
     res.redirect('/error')
   }
 }
