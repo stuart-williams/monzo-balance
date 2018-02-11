@@ -31,7 +31,7 @@ p {
 .logo {
   height: 1em;
   width: 5em;
-  background: url(monzo-logo.svg);
+  background: url('/monzo-logo.svg');
   background-repeat: no-repeat;
   background-size: 100%;
 }
