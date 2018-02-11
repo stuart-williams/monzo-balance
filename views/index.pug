@@ -1,10 +1,6 @@
-html(lang='en')
-  head
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='shortcut icon' type='image/png' href='/favicon.png')
-    link(rel='stylesheet', href='/main.css', type='text/css')
-    title Monzo Balance - #{balance}
-  body
-    .container
-      .logo
-      p#balance Your balance is #{balance}
+extends layout.pug
+
+block content
+  .container
+    .logo
+    p#balance Your balance is #{balance}

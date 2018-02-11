@@ -1,0 +1,40 @@
+{
+  "name": "Monzo Balance",
+  "short_name": "Monzo Balance",
+  "theme_color": "#14233c",
+  "background_color": "#14233c",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "monzo-logo.svg",
+      "type": "image/svg",
+      "sizes": "128x128"
+    },
+    {
+      "src": "monzo-logo.svg",
+      "type": "image/svg",
+      "sizes": "152x152"
+    },
+    {
+      "src": "monzo-logo.svg",
+      "type": "image/svg",
+      "sizes": "144x144"
+    },
+    {
+      "src": "monzo-logo.svg",
+      "type": "image/svg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "monzo-logo.svg",
+      "type": "image/svg",
+      "sizes": "256x256"
+    },
+    {
+      "src": "monzo-logo.svg",
+      "type": "image/svg",
+      "sizes": "512x512"
+    }
+  ]
+}
