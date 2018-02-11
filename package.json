@@ -34,8 +34,8 @@
     "lint": "eslint src",
     "pretest": "npm run lint",
     "test": "mocha",
-    "build:css": "node scripts/css",
-    "predeploy": "npm run build:css && npm test",
+    "build": "node scripts/css",
+    "predeploy": "npm run build && npm test",
     "deploy": "eb deploy"
   }
 }
