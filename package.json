@@ -7,6 +7,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "cheerio": "^1.0.0-rc.2",
+    "clean-css": "^4.1.9",
     "eslint": "^4.17.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
@@ -23,6 +24,7 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "morgan": "^1.9.0",
+    "normalize.css": "^8.0.0",
     "pug": "^2.0.0-rc.4",
     "request": "^2.83.0",
     "winston": "^2.4.0"
@@ -32,10 +34,8 @@
     "lint": "eslint src",
     "pretest": "npm run lint",
     "test": "mocha",
-    "predocker:publish": "npm test",
-    "docker:build": "docker build -t monzo-balance .",
-    "docker:tag": "docker tag monzo-balance:latest 537842893258.dkr.ecr.eu-west-1.amazonaws.com/monzo-balance:latest",
-    "docker:push": "docker push 537842893258.dkr.ecr.eu-west-1.amazonaws.com/monzo-balance:latest",
-    "docker:publish": "npm run docker:build && npm run docker:tag && npm run docker:push"
+    "build:css": "node scripts/css",
+    "predeploy": "npm run build:css && npm test",
+    "deploy": "eb deploy"
   }
 }

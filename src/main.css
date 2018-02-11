@@ -1,0 +1,51 @@
+html, body {
+  color: white;
+  background-color: #14233c;
+  font-size: 8vmin;
+  font-family: MaisonNeue, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+}
+
+p {
+  font-size: 0.5em;
+}
+
+.container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo {
+  height: 1em;
+  width: 5em;
+  background: url(monzo-logo.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+button {
+  color: white;
+  background-color: #00a4db;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.4em;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #008BC2;
+}
