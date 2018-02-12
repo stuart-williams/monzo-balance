@@ -8,7 +8,7 @@ module.exports = {
   ],
   stripPrefix: 'public/',
   runtimeCaching: [{
-    urlPattern: /^https:\/\/monzobalance\.co.uk/,
+    urlPattern: /^https:\/\/(www.)?monzobalance\.co.uk/,
     handler: 'networkFirst'
   }]
 }
