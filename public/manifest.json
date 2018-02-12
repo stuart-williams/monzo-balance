@@ -1,6 +1,6 @@
 {
   "name": "Monzo Balance",
-  "short_name": "Monzo Balance",
+  "short_name": "Balance",
   "theme_color": "#14233c",
   "background_color": "#14233c",
   "display": "standalone",
