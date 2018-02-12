@@ -16,7 +16,8 @@
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^5.0.0",
     "nock": "^9.1.6",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "sw-precache": "^5.2.1"
   },
   "dependencies": {
     "currency-symbol-map": "^4.0.3",
@@ -34,7 +35,9 @@
     "lint": "eslint src",
     "pretest": "npm run lint",
     "test": "mocha",
-    "build": "node scripts/css",
+    "build:css": "node scripts/css",
+    "build:sw": "sw-precache --config=sw.config.js --verbose",
+    "build": "npm run build:css && npm run build:sw",
     "predeploy": "npm run build && npm test",
     "deploy": "eb deploy"
   }
