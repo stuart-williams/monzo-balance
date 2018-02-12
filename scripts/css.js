@@ -7,7 +7,7 @@ const writeFile = promisify(fs.writeFile)
 
 async function run () {
   try {
-    const file = resolve(__dirname, '../public/main.css')
+    const file = resolve(__dirname, '../views/main.min.css')
     const output = new CleanCSS().minify([
       resolve(__dirname, '../node_modules/normalize.css/normalize.css'),
       resolve(__dirname, '../src/main.css')

@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["favicon.png","84524adc2969925a8945cad8b344f0ad"],["main.css","0678b604ab6837c1181bf123ec65bc74"],["manifest.json","7ae17cdf385905ad4186ff3e18da12ec"],["monzo-logo.svg","36d559aa8cda74bbbd8f0ede8a15a971"]];
+var precacheConfig = [["favicon.png","84524adc2969925a8945cad8b344f0ad"],["manifest.json","7ae17cdf385905ad4186ff3e18da12ec"],["monzo-logo.svg","36d559aa8cda74bbbd8f0ede8a15a971"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
@@ -285,7 +285,7 @@ self.addEventListener('fetch', function(event) {
 
 // Runtime cache configuration, using the sw-toolbox library.
 
-toolbox.router.get(/^https:\/\/monzobalance\.co.uk/, toolbox.networkFirst, {});
+toolbox.router.get(/^https:\/\/(www.)?monzobalance\.co.uk/, toolbox.networkFirst, {});
 
 
 

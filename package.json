@@ -32,6 +32,8 @@
   },
   "scripts": {
     "start": "node src/index",
+    "predev": "npm run build",
+    "dev": "nodemon src/index",
     "lint": "eslint src",
     "pretest": "npm run lint",
     "test": "mocha",
