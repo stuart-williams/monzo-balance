@@ -2,8 +2,6 @@
 
 Love Monzo? Sometimes want to check your balance without out any other functionality whatsoever?? Monzo Balance is for you...
 
-*If you want to log in to the hosted site https://monzobalance.co.uk, I'll need to add you to the collaborators whitelist. You can DM me on the [developer slack](https://devslack.monzo.com/)*
-
 ![Screenshot](https://raw.githubusercontent.com/stuart-williams/monzo-balance/master/assets/screenshot.png)
 
 ## Features
